@@ -2,19 +2,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const Movie = require('./models/movieSchema.js');
+const Movie = require('./models/movie.js');
 const app = express();
 
-let PORT = 3000;
-if (process.env.PORT) {
-  PORT = process.env.PORT
-}
 
 // config
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
+
+let PORT = 3000;
+if (process.env.PORT) {
+  PORT = process.env.PORT
+}
 
 app.post('/', (req, res) => {
   if (req.body.watched === 'on') {
@@ -37,8 +38,10 @@ app.get('/new', (req, res) => {
 
 // main index page route
 app.get('/', (req, res) => {
-  Movie.find({}, (err, allMovies) => {
-    res.render('index.ejs', {allMovies: allMovies})
+  Movie.find({}, (err, movies) => {
+    res.render('index.ejs',
+    {movies: movies}
+    )
   })
 });
 

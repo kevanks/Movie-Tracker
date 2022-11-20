@@ -9,21 +9,13 @@
     <form class="" action="/new" method="GET">
       <input type="submit" value="ADD MOVIE">
     </form>
-    <table>
-      <% for(let i = 0; i < allMovies.length; i++) { %>
-        <tr>
-          <td><%=allMovies[i].year%></td>
-          <td><%=allMovies[i].title%></td>
-          <td>Watched:
-            <% if (allMovies[i].watched === true) { %>
-              Yes
-            <% } else { %>
-              No
-            <% }%>
-          </td>
-        </tr>
+    <ul>
+      <% for (let i = 0; movies.length; i++) { %>
+        <li>
+          <%=movies[i].title%>
+        </li>
       <% } %>
-    </table>
+    </ul>
 
   </body>
 </html>
