@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const Movie = require('./models/movieSchema.js');
 const app = express();
 
 let PORT = 3000;
@@ -15,11 +16,31 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 
+app.post('/', (req, res) => {
+  if (req.body.watched === 'on') {
+    req.body.watched = true
+  } else {
+    req.body.watched = false
+  }
+  Movie.create(req.body, (err, addedMovie) => {
+    res.redirect('/')
+  })
+});
 
 
+// new page route
+app.get('/new', (req, res) => {
+  res.render('new.ejs')
+});
+
+
+
+// main index page route
 app.get('/', (req, res) => {
-  res.render('index.ejs')
-})
+  Movie.find({}, (err, allMovies) => {
+    res.render('index.ejs', {allMovies: allMovies})
+  })
+});
 
 
 
