@@ -17,7 +17,7 @@ app.use(express.static('public'));
 
 
 
-app.get('/movies', (req, res) => {
+app.get('/', (req, res) => {
   res.render('index.ejs')
 })
 
