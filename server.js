@@ -23,8 +23,8 @@ app.get('/movies', (req, res) => {
 
 
 
-mongoose.connect('mongodb://localhost:27017/movie-tracker', () => {
-  console.log('The connection with monogod is established');
+mongoose.connect('mongodb+srv://kevanks:Berserk2018!?@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
+  console.log('Connected to Mongo');
 });
 
 app.listen(PORT, () => {
