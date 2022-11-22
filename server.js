@@ -24,14 +24,6 @@ app.delete('/:id', (req, res) => {
   })
 })
 
-// show page route
-app.get('/:id', (req, res) => {
-  Movie.findById(req.params.id, (err, foundMovie) => {
-    res.render('show.ejs',
-    {foundMovie: foundMovie})
-  })
-});
-
 
 // adds new movie to index
 app.post('/', (req, res) => {
@@ -52,7 +44,6 @@ app.get('/new', (req, res) => {
 });
 
 
-
 // main index page route
 app.get('/', (req, res) => {
   Movie.find({}, (err, allMovies) => {
@@ -60,13 +51,21 @@ app.get('/', (req, res) => {
     {allMovies: allMovies}
     )
   })
-  console.log('index page loaded');
 });
+
+// show page route
+app.get('/:id', (req, res) => {
+  Movie.findById(req.params.id, (err, foundMovie) => {
+    res.render('show.ejs',
+    {foundMovie: foundMovie})
+  })
+});
+
 
 // local:
 // mongodb://localhost:27017/movieTracker
 // heroku"
-// mongodb+srv://kevanks:Berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
+// mongodb+srv://kevanks:berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
 mongoose.connect('mongodb+srv://kevanks:berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
   console.log('Connected to Mongo');
 });
