@@ -10,9 +10,9 @@
       <input type="submit" value="ADD MOVIE">
     </form>
     <ul>
-      <% for (let i = 0; movies.length; i++) { %>
+      <% for (let i = 0; i < allMovies.length; i++) { %>
         <li>
-          <%=movies[i].title%>
+          <a href="/<%=allMovies[i].id%>"><%=allMovies[i].title%></a>
         </li>
       <% } %>
     </ul>

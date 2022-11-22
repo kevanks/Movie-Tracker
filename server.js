@@ -17,6 +17,23 @@ if (process.env.PORT) {
   PORT = process.env.PORT
 }
 
+// deleting route
+app.delete('/:id', (req, res) => {
+  Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
+    res.redirect('/')
+  })
+})
+
+// show page route
+app.get('/:id', (req, res) => {
+  Movie.findById(req.params.id, (err, foundMovie) => {
+    res.render('show.ejs',
+    {foundMovie: foundMovie})
+  })
+});
+
+
+// adds new movie to index
 app.post('/', (req, res) => {
   if (req.body.watched === 'on') {
     req.body.watched = true
@@ -38,15 +55,17 @@ app.get('/new', (req, res) => {
 
 // main index page route
 app.get('/', (req, res) => {
-  Movie.find({}, (err, movies) => {
+  Movie.find({}, (err, allMovies) => {
     res.render('index.ejs',
-    {movies: movies}
+    {allMovies: allMovies}
     )
   })
 });
 
-
-
+// local:
+// mongodb://localhost:27017/movieTracker
+// heroku"
+// mongodb+srv://kevanks:Berserk2018!?@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
 mongoose.connect('mongodb+srv://kevanks:Berserk2018!?@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
   console.log('Connected to Mongo');
 });
