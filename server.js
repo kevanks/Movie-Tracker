@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 
 let PORT = 3000;
-if (process.env.PORT) {
+if(process.env.PORT) {
   PORT = process.env.PORT
 }
 
@@ -60,13 +60,14 @@ app.get('/', (req, res) => {
     {allMovies: allMovies}
     )
   })
+  console.log('index page loaded');
 });
 
 // local:
 // mongodb://localhost:27017/movieTracker
 // heroku"
 // mongodb+srv://kevanks:Berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://kevanks:Berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
+mongoose.connect('mongodb://localhost:27017/movieTracker', () => {
   console.log('Connected to Mongo');
 });
 
