@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 // mongodb://localhost:27017/movieTracker
 // heroku"
 // mongodb+srv://kevanks:Berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://kevanks:Berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
+mongoose.connect('mongodb+srv://kevanks:berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
   console.log('Connected to Mongo');
 });
 
