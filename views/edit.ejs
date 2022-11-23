@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Page</h1>
+    <form class="" action="/<%=foundMovie.id%>?_method=PUT" method="POST">
+      <input type="text" name="title" value="<%=foundMovie.title%>" placeholder="Movie Title">
+      <input type="number" name="year" value="<%=foundMovie.year%>" placeholder="Year Released"> <br>
+      <input type="text" name="director" value="<%=foundMovie.director%>" placeholder="Director">
+      <input type="text" name="genre" value="<%=foundMovie.genre%>" placeholder="Genre(s)"> <br>
+      Watched: <input type="checkbox" name="watched"
+      <% if (foundMovie.watched === true) { %>
+        checked
+      <% } %>
+      >
+      <input type="number" name="rating" value="<%=foundMovie.rating%>" placeholder="Rating (1-5)"> <br>
+      <input type="text" name="comments" value="<%=foundMovie.comments%>" placeholder="Comments"> <br>
+      <input type="submit" value="Submit Changes">
+    </form>
+
+  </body>
+</html>

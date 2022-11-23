@@ -17,12 +17,33 @@ if(process.env.PORT) {
   PORT = process.env.PORT
 }
 
+
 // deleting route
 app.delete('/:id', (req, res) => {
   Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
     res.redirect('/')
   })
 })
+
+// adding edited movie route
+app.put('/:id', (req, res) => {
+  if (req.body.watched === 'on') {
+    req.body.watched = true
+  } else {
+    req.body.watched = false
+  }
+  Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMovie) => {
+    res.redirect('/')
+  })
+});
+
+// edit page route
+app.get('/:id/edit', (req, res) => {
+  Movie.findById(req.params.id, (err, foundMovie) => {
+    res.render('edit.ejs',
+    {foundMovie: foundMovie})
+  })
+});
 
 
 // adds new movie to index
@@ -48,8 +69,7 @@ app.get('/new', (req, res) => {
 app.get('/', (req, res) => {
   Movie.find({}, (err, allMovies) => {
     res.render('index.ejs',
-    {allMovies: allMovies}
-    )
+    {allMovies: allMovies})
   })
 });
 
@@ -62,10 +82,6 @@ app.get('/:id', (req, res) => {
 });
 
 
-// local:
-// mongodb://localhost:27017/movieTracker
-// heroku"
-// mongodb+srv://kevanks:berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority
 mongoose.connect('mongodb+srv://kevanks:berserk2018@cluster0.fqh55jt.mongodb.net/?retryWrites=true&w=majority', () => {
   console.log('Connected to Mongo');
 });
