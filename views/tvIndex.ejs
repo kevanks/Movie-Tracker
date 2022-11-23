@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Movie Tracker</title>
+    <title></title>
   </head>
   <body>
-    <h1>Movie Tracker</h1>
+    <h1>TV Show Tracker</h1>
     <nav>
       <ul>
         <li><a href="/">My Movies</a></li>
@@ -13,15 +13,16 @@
         <li><a href="/anime">My Animes</a></li>
       </ul>
     </nav>
-    <form class="" action="/new" method="GET">
-      <input type="submit" value="ADD MOVIE">
+    <form class="" action="/tv/new" method="GET">
+      <input type="submit" value="ADD TV SHOW">
     </form>
     <ul>
-      <% for (let i = 0; i < allMovies.length; i++) { %>
+      <% for (let i = 0; i < allTv.length; i++) { %>
         <li>
-          <a href="/<%=allMovies[i].id%>"><%=allMovies[i].title%></a>
+          <a href="/tv/<%=allTv[i].id%>"><%=allTv[i].title%></a>
         </li>
       <% } %>
     </ul>
+
   </body>
 </html>

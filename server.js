@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Movie = require('./models/movie.js');
+const Tv = require('./models/tv.js');
 const app = express();
 
 
@@ -17,13 +18,34 @@ if(process.env.PORT) {
   PORT = process.env.PORT
 }
 
+// DELETE ROUTES ////////////////////////////////////////////////////////////////
+// deleting tv route
+app.delete('/tv/:id', (req, res) => {
+  Tv.findByIdAndRemove(req.params.id, (err, deletedTv) => {
+    res.redirect('/tv')
+  })
+});
 
-// deleting route
+// deleting Movie route
 app.delete('/:id', (req, res) => {
   Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
     res.redirect('/')
   })
-})
+});
+
+// EDITING ROUTES ///////////////////////////////////////////////////////////////
+// adding edited tv route
+app.put('/tv/:id', (req, res) => {
+  if (req.body.watched === 'on') {
+    req.body.watched = true
+  } else {
+    req.body.watched = false
+  }
+  Tv.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTv) => {
+    res.redirect('/tv')
+  })
+});
+
 
 // adding edited movie route
 app.put('/:id', (req, res) => {
@@ -37,7 +59,15 @@ app.put('/:id', (req, res) => {
   })
 });
 
-// edit page route
+// tv edit page route
+app.get('/tv/:id/edit', (req, res) => {
+  Tv.findById(req.params.id, (err, foundTv) => {
+    res.render('tvEdit.ejs',
+    {foundTv: foundTv})
+  })
+});
+
+// Movie edit page route
 app.get('/:id/edit', (req, res) => {
   Movie.findById(req.params.id, (err, foundMovie) => {
     res.render('edit.ejs',
@@ -45,6 +75,18 @@ app.get('/:id/edit', (req, res) => {
   })
 });
 
+// NEW PAGE ROUTES //////////////////////////////////////////////////////////////
+// adds new tv to tv tv index
+app.post('/tv', (req, res) => {
+  if (req.body.watched === 'on') {
+    req.body.watched = true
+  } else {
+    req.body.watched = false
+  }
+  Tv.create(req.body, (err, addedTv) => {
+    res.redirect('/tv')
+  })
+});
 
 // adds new movie to index
 app.post('/', (req, res) => {
@@ -58,14 +100,27 @@ app.post('/', (req, res) => {
   })
 });
 
+// Tv new page route
+app.get('/tv/new', (req, res) => {
+  res.render('tvNew.ejs')
+});
 
-// new page route
+
+// Movie new page route
 app.get('/new', (req, res) => {
   res.render('new.ejs')
 });
 
+// INDEX PAGE ROUTES ////////////////////////////////////////////////////////////
+// tv index page route
+app.get('/tv', (req, res) => {
+  Tv.find({}, (err, allTv) => {
+    res.render('tvIndex.ejs',
+    {allTv: allTv})
+  })
+});
 
-// main index page route
+// main Movie index page route
 app.get('/', (req, res) => {
   Movie.find({}, (err, allMovies) => {
     res.render('index.ejs',
@@ -73,7 +128,16 @@ app.get('/', (req, res) => {
   })
 });
 
-// show page route
+// SHOW PAGE ROUTES /////////////////////////////////////////////////////////////
+// tv show page route
+app.get('/tv/:id', (req, res) => {
+  Tv.findById(req.params.id, (err, foundTv) => {
+    res.render('tvShow.ejs',
+    {foundTv: foundTv})
+  })
+});
+
+// Movie show page route
 app.get('/:id', (req, res) => {
   Movie.findById(req.params.id, (err, foundMovie) => {
     res.render('show.ejs',

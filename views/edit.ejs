@@ -16,7 +16,7 @@
         checked
       <% } %>
       >
-      <input type="number" name="rating" value="<%=foundMovie.rating%>" placeholder="Rating (1-5)"> <br>
+      <input type="number" name="rating" min="1" max="5" value="<%=foundMovie.rating%>" placeholder="Rating (1-5)"> <br>
       <input type="text" name="comments" value="<%=foundMovie.comments%>" placeholder="Comments"> <br>
       <input type="submit" value="Submit Changes">
     </form>
