@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Anime Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="/">My Movies</a></li>
+        <li><a href="/tv"> My TV Shows</a></li>
+        <li><a href="/anime">My Animes</a></li>
+      </ul>
+    </nav>
+    <form class="" action="/anime/new" method="GET">
+      <input type="submit" value="ADD ANIME">
+    </form>
+    <ul>
+      <% for (let i = 0; i < allAnime.length; i++) { %>
+        <li>
+          <a href="/anime/<%=allAnime[i].id%>"><%=allAnime[i].title%></a>
+        </li>
+      <% } %>
+
+  </body>
+</html>
