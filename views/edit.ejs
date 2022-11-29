@@ -7,11 +7,10 @@
   </head>
   <%- include ('./partials/header.ejs') %>
   <body class="bg-warning">
+    <div class="text-center">
     <h1>Edit Page</h1>
     <form class="" action="/<%=foundMovie.id%>?_method=PUT" method="POST">
       <div class="mb-3">
-
-      
       <input type="text" name="title" value="<%=foundMovie.title%>" placeholder="Movie Title">
       <input type="number" name="year" value="<%=foundMovie.year%>" placeholder="Year Released"> <br>
       <input type="text" name="director" value="<%=foundMovie.director%>" placeholder="Director">
@@ -22,10 +21,12 @@
       <% } %>
       >
       <input type="number" name="rating" min="1" max="5" value="<%=foundMovie.rating%>" placeholder="Rating (1-5)"> <br>
-      <input type="text" name="comments" value="<%=foundMovie.comments%>" placeholder="Comments"> <br>
+      <input type="text" name="comments" value="<%=foundMovie.comments%>" placeholder="Comments">
+      <input type="text" name="imgUrl" value="<%=foundMovie.imgUrl%>" placeholder="Movie Poster Image URL"> <br>
       </div>
-      <input type="submit" value="Submit Changes">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="Submit Changes">
     </form>
+    </div>
 
   </body>
 </html>

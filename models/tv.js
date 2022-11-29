@@ -7,7 +7,8 @@ const tvSchema = new mongoose.Schema({
   genre: String,
   watched: Boolean,
   rating: {type: Number, min: 1, max: 5},
-  comments: String
+  comments: String,
+  imgUrl: String
 })
 
 const Tv = mongoose.model('Tv', tvSchema)

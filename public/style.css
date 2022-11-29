@@ -1,3 +1,11 @@
-link {
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px 5px 15px 5px;
+}
 
+.row::after {
+  content:"";
+  clear: both;
+  display: table;
 }

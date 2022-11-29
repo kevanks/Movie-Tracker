@@ -7,23 +7,28 @@
   </head>
   <%- include ('./partials/header.ejs') %>
   <body class="bg-warning">
-    <h1>Edit Page</h1>
-    <form class="" action="/anime/<%=foundAnime.id%>?_method=PUT" method="POST">
-      <input type="text" name="title" value="<%=foundAnime.title%>" placeholder="Anime Title">
-      <input type="number" name="year" value="<%=foundAnime.year%>" placeholder="Year Released"> <br>
-      <input type="text" name="mangaka" value="<%=foundAnime.mangaka%>" placeholder="Mangaka (Creator)">
-      <input type="text" name="studio" value="<%=foundAnime.studio%>" placeholder="Animation Studio"> <br>
-      <input type="number" name="numSeasons" value="<%=foundAnime.numSeasons%>" placeholder="Number of Seasons">
-      <input type="text" name="genre" value="<%=foundAnime.genre%>" placeholder="Genre(s)"> <br>
-      Watched: <input type="checkbox" name="watched"
-      <% if (foundAnime.watched === true) { %>
-        checked
-      <% } %>
-      >
-      <input type="number" name="rating" min="1" max="5" value="<%=foundAnime.rating%>" placeholder="Rating (1-5)"> <br>
-      <input type="text" name="comments" value="<%=foundAnime.comments%>" placeholder="Comments"> <br>
-      <input type="submit" value="Submit Changes">
-    </form>
+    <div class="text-center">
+      <h1>Edit Page</h1>
+      <form class="" action="/anime/<%=foundAnime.id%>?_method=PUT" method="POST">
+        <div class="mb-3">
+          <input type="text" name="title" value="<%=foundAnime.title%>" placeholder="Anime Title">
+          <input type="number" name="year" value="<%=foundAnime.year%>" placeholder="Year Released"> <br>
+          <input type="text" name="mangaka" value="<%=foundAnime.mangaka%>" placeholder="Mangaka (Creator)">
+          <input type="text" name="studio" value="<%=foundAnime.studio%>" placeholder="Animation Studio"> <br>
+          <input type="number" name="numSeasons" value="<%=foundAnime.numSeasons%>" placeholder="Number of Seasons">
+          <input type="text" name="genre" value="<%=foundAnime.genre%>" placeholder="Genre(s)"> <br>
+          Watched: <input type="checkbox" name="watched"
+          <% if (foundAnime.watched === true) { %>
+            checked
+            <% } %>
+          >
+          <input type="number" name="rating" min="1" max="5" value="<%=foundAnime.rating%>" placeholder="Rating (1-5)"> <br>
+          <input type="text" name="comments" value="<%=foundAnime.comments%>" placeholder="Comments">
+          <input type="text" name="imgUrl" value="<%=foundAnime.imgUrl%>" placeholder="Anime Poster Image URL"> <br>
+        </div>
+        <input class="btn btn-secondary btn-sm text-white" type="submit" value="Submit Changes">
+      </form>
+    </div>
 
   </body>
 </html>

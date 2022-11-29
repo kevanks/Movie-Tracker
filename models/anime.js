@@ -9,7 +9,8 @@ const animeSchema = new mongoose.Schema({
   studio: String,
   watched: Boolean,
   rating: {type: Number, min: 1, max:5},
-  comments: String
+  comments: String,
+  imgUrl: String
 })
 
 const Anime = mongoose.model('Anime', animeSchema)
