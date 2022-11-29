@@ -6,20 +6,36 @@
     <title></title>
   </head>
   <%- include ('./partials/header.ejs') %>
-  <body class="bg-warning">
+  <body class="bg-danger">
     <%- include ('./partials/nav.ejs') %>
-    <div class="text-center p-2 mb-4 bg-danger text-white">
+    <div class="text-center p-4 mb-2 text-white">
       <h3>Animes</h3>
     </div>
-    <form class="text-center" action="/anime/new" method="GET">
+    <form class="p-0 mb-4 text-center" action="/anime/new" method="GET">
       <input class="btn btn-secondary btn-sm text-white" type="submit" value="ADD ANIME">
     </form>
-    <ul>
-      <% for (let i = 0; i < allAnime.length; i++) { %>
-        <li>
-          <a href="/anime/<%=allAnime[i].id%>"><%=allAnime[i].title%></a>
-        </li>
-      <% } %>
-
+    <table class="table table-hover table-secondary">
+      <thead>
+        <tr>
+          <th scope="col">Year</th>
+          <th scope="col">Title</th>
+          <th scope="col">Watched</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < allAnime.length; i++) { %>
+          <tr>
+            <th scope="row"><%=allAnime[i].year%></th>
+            <td><a href="/anime/<%=allAnime[i].id%>"><%=allAnime[i].title%></a></td>
+            <td>
+              <% if (allAnime[i].watched === true) { %>
+                Yes
+              <% } else { %>
+                No
+              <% }%>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
   </body>
 </html>

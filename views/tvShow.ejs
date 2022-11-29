@@ -7,26 +7,28 @@
   </head>
   <%- include ('./partials/header.ejs') %>
   <body class="bg-warning">
-    <h1> <%=foundTv.title%> (<%=foundTv.year%>)</h1>
-    <h3>Genre: <%=foundTv.genre%></h3>
-    <h3>Number of Seasons: <%=foundTv.numSeasons%></h3>
-    <h3>Watched:
-    <% if(foundTv.watched === true) { %>
-      Yes
-    <% } else { %>
-      No
-    <% } %>
-    </h3>
-    <h3>Rating: <%=foundTv.rating%></h3>
-    <h3>Comments: <%=foundTv.comments%></h3>
-    <form class="" action="/tv" method="GET">
-      <input type="submit" value="BACK">
+    <div class="p-4 mb-2 text-center">
+      <h1> <%=foundTv.title%> (<%=foundTv.year%>)</h1>
+      <h3>Genre: <%=foundTv.genre%></h3>
+      <h3>Number of Seasons: <%=foundTv.numSeasons%></h3>
+      <h3>Watched:
+        <% if(foundTv.watched === true) { %>
+          Yes
+        <% } else { %>
+          No
+        <% } %>
+      </h3>
+      <h3>Rating: <%=foundTv.rating%></h3>
+      <h3>Comments: <%=foundTv.comments%></h3>
+    </div>
+    <form class="p-0 mb-4 text-center" action="/tv" method="GET">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="BACK">
     </form>
-    <form class="" action="/tv/<%=foundTv.id%>/edit" method="GET">
-      <input type="submit" value="EDIT">
+    <form class="p-0 mb-4 text-center" action="/tv/<%=foundTv.id%>/edit" method="GET">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="EDIT">
     </form>
-    <form class="" action="/tv/<%=foundTv.id%>?_method=DELETE" method="POST">
-      <input type="submit" value="DELETE">
+    <form class="p-0 mb-4 text-center" action="/tv/<%=foundTv.id%>?_method=DELETE" method="POST">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="DELETE">
     </form>
 
   </body>

@@ -7,28 +7,30 @@
   </head>
   <body class="bg-warning">
     <%- include ('./partials/header.ejs') %>
-    <h1> <%=foundAnime.title%> (<%=foundAnime.year%>)</h1>
-    <h3>Mangaka: <%=foundAnime.mangaka%></h3>
-    <h3>Genre: <%=foundAnime.genre%></h3>
-    <h3>Number of Seasons: <%=foundAnime.numSeasons%></h3>
-    <h3>Studio: <%=foundAnime.studio%></h3>
-    <h3>Watched:
-    <% if(foundAnime.watched === true) { %>
-      Yes
-    <% } else { %>
-      No
-    <% } %>
+    <div class="p-4 mb-2 text-center">
+      <h1> <%=foundAnime.title%> (<%=foundAnime.year%>)</h1>
+      <h3>Mangaka: <%=foundAnime.mangaka%></h3>
+      <h3>Genre: <%=foundAnime.genre%></h3>
+      <h3>Number of Seasons: <%=foundAnime.numSeasons%></h3>
+      <h3>Studio: <%=foundAnime.studio%></h3>
+      <h3>Watched:
+        <% if(foundAnime.watched === true) { %>
+          Yes
+        <% } else { %>
+          No
+        <% } %>
     </h3>
     <h3>Rating: <%=foundAnime.rating%></h3>
     <h3>Comments: <%=foundAnime.comments%></h3>
-    <form class="" action="/anime" method="GET">
-      <input type="submit" value="BACK">
+    </div>
+    <form class="p-0 mb-4 text-center" action="/anime" method="GET">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="BACK">
     </form>
-    <form class="" action="/anime/<%=foundAnime.id%>/edit" method="GET">
-      <input type="submit" value="EDIT">
+    <form class="p-0 mb-4 text-center" action="/anime/<%=foundAnime.id%>/edit" method="GET">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="EDIT">
     </form>
-    <form class="" action="/anime/<%=foundAnime.id%>?_method=DELETE" method="POST">
-      <input type="submit" value="DELETE">
+    <form class="p-0 mb-4 text-center" action="/anime/<%=foundAnime.id%>?_method=DELETE" method="POST">
+      <input class="btn btn-secondary btn-sm text-white" type="submit" value="DELETE">
     </form>
 
   </body>
