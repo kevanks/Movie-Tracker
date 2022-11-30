@@ -31,6 +31,7 @@
           <th scope="col">Year</th>
           <th scope="col">Title</th>
           <th scope="col">Watched</th>
+          <th scope="col">Rating</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -44,9 +45,11 @@
               <% } else { %>
                 No
               <% }%>
+            <td><%=allMovies[i].rating%></td>
           </tr>
         <% } %>
       </tbody>
     </table>
   </body>
+  <%- include ('./partials/footer.ejs') %>
 </html>

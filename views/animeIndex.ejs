@@ -33,6 +33,7 @@
           <th scope="col">Year</th>
           <th scope="col">Title</th>
           <th scope="col">Watched</th>
+          <th scope="col">Rating</th>
         </tr>
       </thead>
       <tbody>
@@ -46,9 +47,11 @@
               <% } else { %>
                 No
               <% }%>
+            <th><%=allAnime[i].rating%></th>
           </tr>
         <% } %>
       </tbody>
     </table>
   </body>
+  <%- include ('./partials/footer.ejs') %>
 </html>

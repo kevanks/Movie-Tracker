@@ -9,7 +9,7 @@
   <body class="bg-warning">
     <div class="p-4 mb-2 text-center">
       <h1> <%=foundMovie.title%> (<%=foundMovie.year%>)</h1>
-      <img src="<%=foundMovie.imgUrl%>" alt="" width="300" height="400">
+      <img src="<%=foundMovie.imgUrl%>" alt="" width="400" height="500">
       <h3>Genre: <%=foundMovie.genre%></h3>
       <h3>Director: <%=foundMovie.director%></h3>
       <h3>Watched:
@@ -22,14 +22,15 @@
       <h3>Rating: <%=foundMovie.rating%></h3>
       <h3>Comments: <%=foundMovie.comments%></h3>
     </div>
-    <form class="p-0 mb-4 text-center" action="/" method="GET">
+    <form class="p-0 mb-3 text-center" action="/" method="GET">
       <input class="btn btn-secondary btn-sm text-white" type="submit" value="BACK">
     </form>
-    <form class="p-0 mb-4 text-center" action="/<%=foundMovie.id%>/edit" method="GET">
-      <input class="btn btn-secondary btn-sm text-white" type="submit" value="EDIT">
+    <form class="p-0 mb-3 text-center" action="/<%=foundMovie.id%>/edit" method="GET">
+      <input class="btn btn-success btn-sm text-white" type="submit" value="EDIT">
     </form>
-    <form class="p-0 mb-4 text-center" action="/<%=foundMovie.id%>?_method=DELETE" method="POST">
-      <input class="btn btn-secondary btn-sm text-white" type="submit" value="DELETE">
+    <form class="p-0 mb-3 text-center" action="/<%=foundMovie.id%>?_method=DELETE" method="POST">
+      <input class="btn btn-danger btn-sm text-white" type="submit" value="DELETE">
     </form>
   </body>
+  <%- include ('./partials/footer.ejs') %>
 </html>

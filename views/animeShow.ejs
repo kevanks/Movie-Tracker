@@ -9,7 +9,7 @@
     <%- include ('./partials/header.ejs') %>
     <div class="p-4 mb-2 text-center">
       <h1> <%=foundAnime.title%> (<%=foundAnime.year%>)</h1>
-      <img src="<%=foundAnime.imgUrl%>" alt="" width="300" height="400">
+      <img src="<%=foundAnime.imgUrl%>" alt="" width="400" height="500">
       <h3>Mangaka: <%=foundAnime.mangaka%></h3>
       <h3>Genre: <%=foundAnime.genre%></h3>
       <h3>Number of Seasons: <%=foundAnime.numSeasons%></h3>
@@ -24,15 +24,16 @@
     <h3>Rating: <%=foundAnime.rating%></h3>
     <h3>Comments: <%=foundAnime.comments%></h3>
     </div>
-    <form class="p-0 mb-4 text-center" action="/anime" method="GET">
+    <form class="p-0 mb-3 text-center" action="/anime" method="GET">
       <input class="btn btn-secondary btn-sm text-white" type="submit" value="BACK">
     </form>
-    <form class="p-0 mb-4 text-center" action="/anime/<%=foundAnime.id%>/edit" method="GET">
-      <input class="btn btn-secondary btn-sm text-white" type="submit" value="EDIT">
+    <form class="p-0 mb-3 text-center" action="/anime/<%=foundAnime.id%>/edit" method="GET">
+      <input class="btn btn-success btn-sm text-white" type="submit" value="EDIT">
     </form>
-    <form class="p-0 mb-4 text-center" action="/anime/<%=foundAnime.id%>?_method=DELETE" method="POST">
-      <input class="btn btn-secondary btn-sm text-white" type="submit" value="DELETE">
+    <form class="p-0 mb-3 text-center" action="/anime/<%=foundAnime.id%>?_method=DELETE" method="POST">
+      <input class="btn btn-danger btn-sm text-white" type="submit" value="DELETE">
     </form>
 
   </body>
+  <%- include ('./partials/footer.ejs') %>
 </html>

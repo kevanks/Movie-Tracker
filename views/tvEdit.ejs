@@ -7,7 +7,7 @@
   </head>
   <%- include ('./partials/header.ejs') %>
   <body class="bg-warning">
-    <div class="text-center">
+    <div class="p-4 text-center">
       <h1>Edit Page</h1>
       <form class="" action="/tv/<%=foundTv.id%>?_method=PUT" method="POST">
         <div class="mb-3">
@@ -19,12 +19,13 @@
           <% if (foundTv.watched === true) { %>
             checked
           <% } %>
-          >
-          <input type="number" name="rating" min="1" max="5" value="<%=foundTv.rating%>" placeholder="Rating (1-5)"> <br>
+          > <br>
+          <span>Rating (1-5)</span>
+          <input type="number" name="rating" min="1" max="5" value="<%=foundTv.rating%>"> <br>
           <input type="text" name="comments" value="<%=foundTv.comments%>" placeholder="Comments">
           <input type="text" name="imgUrl" value="<%=foundTv.imgUrl%>" placeholder="TV Show Poster Image URL"> <br>
         </div>
-      <input class="btn btn-secondary btn-sm text-white" type="submit" value="Submit Changes">
+      <input class="btn btn-success btn-sm text-white" type="submit" value="Submit Changes">
     </form>
     </div>
 
